@@ -1,0 +1,161 @@
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <SNR>25_allmlOclose  ><Left><Left>
+inoremap <buffer> <SNR>25_allmlOopen <%= 
+inoremap <buffer> <SNR>25_xhtmltrans <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+inoremap <buffer> <SNR>25_htmltrans <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+nmap <buffer> gf <Plug>RailsTabFind
+nmap <buffer> f <Plug>RailsSplitFind
+nmap <buffer> [f <Plug>RailsAlternate
+nmap <buffer> \dxx <Plug>allmlLineXmlDecode
+nmap <buffer> \exx <Plug>allmlLineXmlEncode
+nmap <buffer> \duu <Plug>allmlLineUrlDecode
+nmap <buffer> \euu <Plug>allmlLineUrlEncode
+map <buffer> \dx <Plug>allmlXmlDecode
+map <buffer> \ex <Plug>allmlXmlEncode
+map <buffer> \du <Plug>allmlUrlDecode
+map <buffer> \eu <Plug>allmlUrlEncode
+nmap <buffer> ]f <Plug>RailsRelated
+nmap <buffer> gf <Plug>RailsFind
+nnoremap <buffer> <silent> <Plug>RailsTabFind :RTfind
+nnoremap <buffer> <silent> <Plug>RailsVSplitFind :RVfind
+nnoremap <buffer> <silent> <Plug>RailsSplitFind :RSfind
+nnoremap <buffer> <silent> <Plug>RailsFind :REfind
+nnoremap <buffer> <silent> <Plug>RailsRelated :R
+nnoremap <buffer> <silent> <Plug>RailsAlternate :A
+imap <buffer> & <Plug>allmlXmlV
+imap <buffer> % <Plug>allmlUrlV
+imap <buffer> & <Plug>allmlXmlEncode
+imap <buffer> % <Plug>allmlUrlEncode
+imap <buffer> " <NL>I<# A >F<NL>s
+imap <buffer> ' <#  >2hi
+inoremap <buffer> _ <NL>I<% A -%>F<NL>s
+inoremap <buffer> - <%  -%>3hi
+imap <buffer> ] <>O
+inoremap <buffer> > %>
+inoremap <buffer> < <%
+imap <buffer>  /
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=RubyBalloonexpr()
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal cindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=:0,p0,t0
+setlocal cinwords=if,else,while,do,for,switch,case
+setlocal comments=:#
+setlocal commentstring=<%#%s%>
+setlocal complete=.,w,b,u,t,i
+setlocal completefunc=syntaxcomplete#Complete
+setlocal nocopyindent
+setlocal nocursorcolumn
+setlocal cursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=%D(in\\\ %f),%A\\\ %\\\\+%\\\\d%\\\\+)\\\ Failure:,%A\\\ %\\\\+%\\\\d%\\\\+)\\\ Error:,%+A'%.%#'\\\ FAILED,%C%.%#(eval)%.%#,%C-e:%.%#,%C%.%#/lib/gems/%\\\\d.%\\\\d/gems/%.%#,%C%.%#/lib/ruby/%\\\\d.%\\\\d/%.%#,%C%.%#/vendor/rails/%.%#,%C\\\ %\\\\+On\\\ line\\\ #%l\\\ of\\\ %f,%CActionView::TemplateError:\\\ compile\\\ error,%Ctest_%.%#(%.%#):%#,%C%.%#\\\ [%f:%l]:,%C\\\ \\\ \\\ \\\ [%f:%l:%.%#,%C\\\ \\\ \\\ \\\ %f:%l:%.%#,%C\\\ \\\ \\\ \\\ \\\ %f:%l:%.%#]:,%C\\\ \\\ \\\ \\\ \\\ %f:%l:%.%#,%Z%f:%l:\\\ %#%m,%Z%f:%l:,%C%m,%.%#.rb:%\\\\d%\\\\+:in\\\ `load':\\\ %f:%l:\\\ syntax\\\ error\\\\\\,\ %m,%.%#.rb:%\\\\d%\\\\+:in\\\ `load':\\\ %f:%l:\\\ %m,%.%#:in\\\ `require':in\\\ `require':\\\ %f:%l:\\\ syntax\\\ error\\\\\\,\ %m,%.%#:in\\\ `require':in\\\ `require':\\\ %f:%l:\\\ %m,%-G%.%#/lib/gems/%\\\\d.%\\\\d/gems/%.%#,%-G%.%#/lib/ruby/%\\\\d.%\\\\d/%.%#,%-G%.%#/vendor/rails/%.%#,%-G%.%#%\\\\d%\\\\d:%\\\\d%\\\\d:%\\\\d%\\\\d%.%#,%-G%\\\\s%#from\\\ %.%#,%f:%l:\\\ %#%m,%-G%.%#
+setlocal expandtab
+if &filetype != 'eruby'
+setlocal filetype=eruby
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=3
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=ql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=2
+setlocal imsearch=2
+setlocal include=^\\s*\\<\\(load\\|w*require\\)\\>
+setlocal includeexpr=RailsIncludeexpr()
+setlocal indentexpr=GetErubyIndent()
+setlocal indentkeys=o,O,*<Return>,<>>,{,},0),0],o,O,!^F,=end,=else,=elsif,=rescue,=ensure,=when
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255,$
+setlocal keywordprg=ri
+setlocal nolinebreak
+setlocal nolisp
+setlocal list
+setlocal makeprg=rake
+setlocal matchpairs=(:),{:},[:],<:>
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=rubycomplete#Complete
+setlocal path=.,~/Scripts/Workspace/CheckIn2,~/Scripts/Workspace/CheckIn2/app,~/Scripts/Workspace/CheckIn2/app/models,~/Scripts/Workspace/CheckIn2/app/controllers,~/Scripts/Workspace/CheckIn2/app/helpers,~/Scripts/Workspace/CheckIn2/config,~/Scripts/Workspace/CheckIn2/lib,~/Scripts/Workspace/CheckIn2/app/views,~/Scripts/Workspace/CheckIn2/app/views/sortable_tickets,~/Scripts/Workspace/CheckIn2/public,~/Scripts/Workspace/CheckIn2/test,~/Scripts/Workspace/CheckIn2/test/unit,~/Scripts/Workspace/CheckIn2/test/functional,~/Scripts/Workspace/CheckIn2/test/integration,~/Scripts/Workspace/CheckIn2/app/*,~/Scripts/Workspace/CheckIn2/vendor,~/Scripts/Workspace/CheckIn2/vendor/plugins/*/lib,~/Scripts/Workspace/CheckIn2/vendor/plugins/*/test,~/Scripts/Workspace/CheckIn2/vendor/rails/*/lib,~/Scripts/Workspace/CheckIn2/vendor/rails/*/test,/usr/local/lib/site_ruby/1.8,/usr/local/lib/site_ruby/1.8/i486-linux,/usr/local/lib/site_ruby/1.8/i386-linux,/usr/local/lib/site_ruby,/usr/lib/ruby/vendor_ruby/1.8,/usr/lib/ruby/vendor_ruby/1.8/i486-linux,/usr/lib/ruby/vendor_ruby,/usr/lib/ruby/1.8,/usr/lib/ruby/1.8/i486-linux,/usr/lib/ruby/1.8/i386-linux,,~/.gem/ruby/1.8/gems/mislav-will_paginate-2.2.3/lib,~/.gem/ruby/1.8/gems/selenium-client-1.2.12/lib,/usr/lib/ruby/gems/1.8/gems/Linguistics-1.0.5/lib,/usr/lib/ruby/gems/1.8/gems/ParseTree-3.0.3/lib,/usr/lib/ruby/gems/1.8/gems/ParseTree-3.0.3/test,/usr/lib/ruby/gems/1.8/gems/RedCloth-4.1.9/ext,/usr/lib/ruby/gems/1.8/gems/RedCloth-4.1.9/lib,/usr/lib/ruby/gems/1.8/gems/RedCloth-4.1.9/lib/case_sensitive_require,/usr/lib/ruby/gems/1.8/gems/RubyInline-3.8.1/lib,/usr/lib/ruby/gems/1.8/gems/ZenTest-3.11.0/lib,/usr/lib/ruby/gems/1.8/gems/ZenTest-3.11.1/lib,/usr/lib/ruby/gems/1.8/gems/ZenTest-4.0.0/lib,/usr/lib/ruby/gems/1.8/gems/abstract-1.0.0/lib,/usr/lib/ruby/gems/1.8/gems/actionmailer-2.1.1/lib,/usr/lib/ruby/gems/1.8/gems/actionmailer-2.2.2/lib,/usr/lib/ruby/gems/1.8/gems/actionmailer-2.3.2/lib,/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.1/lib,/usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib,/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.2/lib,/usr/lib/ruby/gems/1.8/gems/activerecord-2.1.1/lib,/usr/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib,/usr/lib/ruby/gems/1.8/gems/activerecord-2.3.2/lib,/usr/lib/ruby/gems/1.8/gems/activeresource-2.1.1/lib,/usr/lib/ruby/gems/1.8/gems/activeresource-2.2.2/lib,/usr/lib/ruby/gems/1.8/gems/activeresource-2.3.2/lib,/usr/lib/ruby/gems/1.8/gems/activesupport-2.1.1/lib,/usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib,/usr/lib/ruby/gems/1.8/gems/activesupport-2.3.2/lib,/usr/lib/ruby/gems/1.8/gems/addressable-2.0.2/lib,/usr/lib/ruby/gems/1.8/gems/airake-0.4.5/lib,/usr/lib/ruby/gems/1.8/gems/arrayfields-4.6.0/lib,/usr/lib/ruby/gems/1.8/gems/arrayfields-4.7.0/lib,/usr/lib/ruby/gems/1.8/gems/arrayfields-4.7.2/lib,/usr/lib/ruby/gems/1.8/gems/bcrypt-ruby-2.0.3/lib,/usr/lib/ruby/gems/1.8/gems/bcrypt-ruby-2.0.5/lib,/usr/lib/ruby/gems/1.8/gems/bj-1.0.1/lib,/usr/lib/ruby/gems/1.8/gems/builder-2.1.2/lib,/usr/lib/ruby/gems/1.8/gems/capistrano-2.5.4/lib,/usr/lib/ruby/gems/1.8/gems/capistrano-2.5.5/lib,/usr/lib/ruby/gems/1.8/gems/cgi_multipart_eof_fix-2.5.0/lib,/usr/lib/ruby/gems/1.8/gems/chronic-0.2.3/lib,/usr/lib/ruby/gems/1.8/gems/cucumber-0.3.11/lib,/usr/lib/ruby/gems/1.8/gems/daemons-1.0.10/lib,/usr/lib/ruby/gems/1.8/gems/data_objects-0.9.11/lib,/usr/lib/ruby/gems/1.8/gems/diff-lcs-1.1.2/lib,/usr/lib/ruby/gems/1.8/gems/dm-aggregates-0.9.10/lib,/usr/lib/ruby/gems/1.8/gems/dm-core-0.9.10/lib,/usr/lib/ruby/gems/1.8/gems/dm-migrations-0.9.10/lib,/usr/lib/ruby/gems/1.8/gems/dm-serializer-0.9.10/lib,/usr/lib/ruby/gems/1.8/gems/dm-sweatshop-0.9.10/lib,/usr/lib/ruby/gems/1.8/gems/dm-timestamps-0.9.10/lib,/usr/lib/ruby/gems/1.8/gems/dm-types-0.9.10/lib,/usr/lib/ruby/gems/1.8/gems/dm-validations-0.9.10/lib,/usr/lib/ruby/gems/1.8/gems/do_sqlite3-0.9.11/ext,/usr/lib/ruby/gems/1.8/gems/do_sqlite3-0.9.11/lib,/usr/lib/ruby/gems/1.8/gems/ebay-1.1/lib,/usr/lib/ruby/gems/1.8/gems/echoe-3.1.1/lib,/usr/lib/ruby/gems/1.8/gems/erubis-2.6.4/lib,/usr/lib/ruby/gems/1.8/gems/eventmachine-0.12.4/lib,/usr/lib/ruby/gems/1.8/g
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=2
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=2
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=%<%f\ %h%m%r%=%-20.(line=%l,col=%c%V,totlin=%L%)%h%m%r%=%-40(,%n%Y%{RailsSTATUSLINE()}%)%P
+setlocal suffixesadd=.rhtml,.erb,.rxml,.builder,.rjs,.mab,.liquid,.haml,.dryml,.mn,.rb,.css,.js,.html,.yml,.csv
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'eruby'
+setlocal syntax=eruby
+endif
+setlocal tabstop=2
+setlocal tags=~/Scripts/Workspace/CheckIn2/tmp/tags,./tags,./TAGS,tags,TAGS,~/Scripts/Workspace/CheckIn2/tags
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal nowrap
+setlocal wrapmargin=0
+silent! normal! zE
+28,30fold
+32,88fold
+90,93fold
+95,107fold
+26,140fold
+26
+normal zo
+28
+normal zc
+32
+normal zc
+90
+normal zc
+95
+normal zc
+26
+normal zo
+let s:l = 109 - ((84 * winheight(0) + 12) / 25)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+109
+normal! 09l
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+" vim: set ft=vim :

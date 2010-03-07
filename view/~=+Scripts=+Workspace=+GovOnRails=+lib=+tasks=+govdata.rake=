@@ -1,0 +1,167 @@
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+nmap <buffer> gf <Plug>RailsTabFind
+nmap <buffer> f <Plug>RailsSplitFind
+nmap <buffer> [f <Plug>RailsAlternate
+nmap <buffer> ]f <Plug>RailsRelated
+nmap <buffer> gf <Plug>RailsFind
+map <buffer> <silent> <Plug>RailsTabFind :RTfind
+map <buffer> <silent> <Plug>RailsVSplitFind :RVfind
+map <buffer> <silent> <Plug>RailsSplitFind :RSfind
+map <buffer> <silent> <Plug>RailsFind :REfind
+map <buffer> <silent> <Plug>RailsRelated :R
+map <buffer> <silent> <Plug>RailsAlternate :A
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=RubyBalloonexpr()
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal comments=:#
+setlocal commentstring=#\ %s
+setlocal complete=.,w,b,u,t,i
+setlocal completefunc=syntaxcomplete#Complete
+setlocal nocopyindent
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=^\\s*def\\s\\+\\(self\\.\\)\\=\\|^\\s*\\%(task\\|file\\)\\s\\+[:'\"]
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=%D(in\\\ %f),%A\\\ %\\\\+%\\\\d%\\\\+)\\\ Failure:,%A\\\ %\\\\+%\\\\d%\\\\+)\\\ Error:,%+A'%.%#'\\\ FAILED,%C%.%#(eval)%.%#,%C-e:%.%#,%C%.%#/lib/gems/%\\\\d.%\\\\d/gems/%.%#,%C%.%#/lib/ruby/%\\\\d.%\\\\d/%.%#,%C%.%#/vendor/rails/%.%#,%C\\\ %\\\\+On\\\ line\\\ #%l\\\ of\\\ %f,%CActionView::TemplateError:\\\ compile\\\ error,%Ctest_%.%#(%.%#):%#,%C%.%#\\\ [%f:%l]:,%C\\\ \\\ \\\ \\\ [%f:%l:%.%#,%C\\\ \\\ \\\ \\\ %f:%l:%.%#,%C\\\ \\\ \\\ \\\ \\\ %f:%l:%.%#]:,%C\\\ \\\ \\\ \\\ \\\ %f:%l:%.%#,%Z%f:%l:\\\ %#%m,%Z%f:%l:,%C%m,%.%#.rb:%\\\\d%\\\\+:in\\\ `load':\\\ %f:%l:\\\ syntax\\\ error\\\\\\,\ %m,%.%#.rb:%\\\\d%\\\\+:in\\\ `load':\\\ %f:%l:\\\ %m,%.%#:in\\\ `require':in\\\ `require':\\\ %f:%l:\\\ syntax\\\ error\\\\\\,\ %m,%.%#:in\\\ `require':in\\\ `require':\\\ %f:%l:\\\ %m,%-G%.%#/lib/gems/%\\\\d.%\\\\d/gems/%.%#,%-G%.%#/lib/ruby/%\\\\d.%\\\\d/%.%#,%-G%.%#/vendor/rails/%.%#,%-G%.%#%\\\\d%\\\\d:%\\\\d%\\\\d:%\\\\d%\\\\d%.%#,%-G%\\\\s%#from\\\ %.%#,%f:%l:\\\ %#%m,%-G%.%#
+setlocal expandtab
+if &filetype != 'ruby'
+setlocal filetype=ruby
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=ql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=2
+setlocal imsearch=2
+setlocal include=^\\s*\\<\\(load\\|w*require\\)\\>
+setlocal includeexpr=RailsIncludeexpr()
+setlocal indentexpr=GetRubyIndent()
+setlocal indentkeys=0{,0},0),0],!^F,o,O,e,=end,=elsif,=when,=ensure,=rescue,==begin,==end
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=ri
+setlocal nolinebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=rake
+setlocal matchpairs=(:),{:},[:],<:>
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=.,~/Scripts/Workspace/GovOnRails,~/Scripts/Workspace/GovOnRails/app/controllers,~/Scripts/Workspace/GovOnRails/app,~/Scripts/Workspace/GovOnRails/app/models,~/Scripts/Workspace/GovOnRails/app/helpers,~/Scripts/Workspace/GovOnRails/config,~/Scripts/Workspace/GovOnRails/lib,~/Scripts/Workspace/GovOnRails/vendor,~/Scripts/Workspace/GovOnRails/vendor/plugins/*/lib,~/Scripts/Workspace/GovOnRails/test/unit,~/Scripts/Workspace/GovOnRails/test/functional,~/Scripts/Workspace/GovOnRails/test/integration,~/Scripts/Workspace/GovOnRails/app/apis,~/Scripts/Workspace/GovOnRails/app/services,~/Scripts/Workspace/GovOnRails/test,/vendor/plugins/*/test,~/Scripts/Workspace/GovOnRails/vendor/rails/*/lib,~/Scripts/Workspace/GovOnRails/vendor/rails/*/test,~/Scripts/Workspace/GovOnRails/spec,~/Scripts/Workspace/GovOnRails/spec/*,~/Scripts/Workspace/GovOnRails,~/Scripts/Workspace/GovOnRails/app/controllers,~/Scripts/Workspace/GovOnRails/app,~/Scripts/Workspace/GovOnRails/app/models,~/Scripts/Workspace/GovOnRails/app/helpers,~/Scripts/Workspace/GovOnRails/config,~/Scripts/Workspace/GovOnRails/lib,~/Scripts/Workspace/GovOnRails/vendor,~/Scripts/Workspace/GovOnRails/vendor/plugins/*/lib,~/Scripts/Workspace/GovOnRails/test/unit,~/Scripts/Workspace/GovOnRails/test/functional,~/Scripts/Workspace/GovOnRails/test/integration,~/Scripts/Workspace/GovOnRails/app/apis,~/Scripts/Workspace/GovOnRails/app/services,~/Scripts/Workspace/GovOnRails/test,/vendor/plugins/*/test,~/Scripts/Workspace/GovOnRails/vendor/rails/*/lib,~/Scripts/Workspace/GovOnRails/vendor/rails/*/test,~/Scripts/Workspace/GovOnRails/spec,~/Scripts/Workspace/GovOnRails/spec/*,/usr/local/lib/site_ruby/1.8,/usr/local/lib/site_ruby/1.8/i486-linux,/usr/local/lib/site_ruby/1.8/i386-linux,/usr/local/lib/site_ruby,/usr/lib/ruby/vendor_ruby/1.8,/usr/lib/ruby/vendor_ruby/1.8/i486-linux,/usr/lib/ruby/vendor_ruby,/usr/lib/ruby/1.8,/usr/lib/ruby/1.8/i486-linux,/usr/lib/ruby/1.8/i386-linux,,/usr/lib/ruby/gems/1.8/gems/ZenTest-3.11.0/lib,/usr/lib/ruby/gems/1.8/gems/actionmailer-2.1.1/lib,/usr/lib/ruby/gems/1.8/gems/actionmailer-2.2.2/lib,/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.1/lib,/usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib,/usr/lib/ruby/gems/1.8/gems/activerecord-2.1.1/lib,/usr/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib,/usr/lib/ruby/gems/1.8/gems/activeresource-2.1.1/lib,/usr/lib/ruby/gems/1.8/gems/activeresource-2.2.2/lib,/usr/lib/ruby/gems/1.8/gems/activesupport-2.1.1/lib,/usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib,/usr/lib/ruby/gems/1.8/gems/arrayfields-4.6.0/lib,/usr/lib/ruby/gems/1.8/gems/bcrypt-ruby-2.0.3/lib,/usr/lib/ruby/gems/1.8/gems/bj-1.0.1/lib,/usr/lib/ruby/gems/1.8/gems/builder-2.1.2/lib,/usr/lib/ruby/gems/1.8/gems/cgi_multipart_eof_fix-2.5.0/lib,/usr/lib/ruby/gems/1.8/gems/chronic-0.2.3/lib,/usr/lib/ruby/gems/1.8/gems/daemons-1.0.10/lib,/usr/lib/ruby/gems/1.8/gems/fastthread-1.0.1/ext,/usr/lib/ruby/gems/1.8/gems/fastthread-1.0.1/lib,/usr/lib/ruby/gems/1.8/gems/fattr-1.0.3/lib,/usr/lib/ruby/gems/1.8/gems/gem_plugin-0.2.3/lib,/usr/lib/ruby/gems/1.8/gems/haml-2.0.3/lib,/usr/lib/ruby/gems/1.8/gems/haml-2.0.4/lib,/usr/lib/ruby/gems/1.8/gems/haml-2.0.5/lib,/usr/lib/ruby/gems/1.8/gems/hoe-1.7.0/lib,/usr/lib/ruby/gems/1.8/gems/hoe-1.8.0/lib,/usr/lib/ruby/gems/1.8/gems/hoe-1.8.2/lib,/usr/lib/ruby/gems/1.8/gems/hpricot-0.6.161/lib,/usr/lib/ruby/gems/1.8/gems/hpricot-0.6.161/lib/universal-darwin9.0,/usr/lib/ruby/gems/1.8/gems/hpricot-0.6.164/lib,/usr/lib/ruby/gems/1.8/gems/hpricot-0.6.164/lib/universal-java1.6,/usr/lib/ruby/gems/1.8/gems/html-table-1.3.2/lib,/usr/lib/ruby/gems/1.8/gems/httpclient-2.1.2/lib,/usr/lib/ruby/gems/1.8/gems/log4r-1.0.5/src,/usr/lib/ruby/gems/1.8/gems/main-2.8.2/lib,/usr/lib/ruby/gems/1.8/gems/main-2.8.3/lib,/usr/lib/ruby/gems/1.8/gems/markaby-0.5/lib,/usr/lib/ruby/gems/1.8/gems/mechanize-0.7.8/lib,/usr/lib/ruby/gems/1.8/gems/mechanize-0.8.4/lib,/usr/lib/ruby/gems/1.8/gems/mechanize-0.8.5/lib,/usr/lib/ruby/gems/1.8/gems/mislav-will_paginate-2.3.4/lib,/usr/lib/ruby/gems/1.8/gems/mislav-will_paginate-2.3.6/lib,/usr/lib/ruby/gems/1.8/gems/mocha-0.9.3/lib,/u
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=2
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=2
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=%<%f\ %h%m%r%{RailsStatusline()}%=
+setlocal suffixesadd=.rb,.rhtml,.erb,.rxml,.builder,.rjs,.mab,.liquid,.haml,.dryml,.mn,.yml,.csv,.rake,s.rb
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'ruby'
+setlocal syntax=ruby
+endif
+setlocal tabstop=2
+setlocal tags=./tags,./TAGS,tags,TAGS,~/Scripts/Workspace/GovOnRails/tags,~/Scripts/Workspace/GovOnRails/.tags
+setlocal textwidth=79
+setlocal thesaurus=
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal nowrap
+setlocal wrapmargin=0
+silent! normal! zE
+7,17fold
+23,40fold
+22,40fold
+45,59fold
+45,59fold
+62,64fold
+67,99fold
+67,99fold
+67,99fold
+109,130fold
+135,137fold
+140,191fold
+197,205fold
+7
+normal zc
+22
+normal zo
+23
+normal zc
+22
+normal zo
+45
+normal zo
+45
+normal zc
+45
+normal zo
+62
+normal zc
+67
+normal zo
+67
+normal zo
+67
+normal zc
+67
+normal zo
+67
+normal zo
+109
+normal zc
+135
+normal zc
+140
+normal zc
+197
+normal zc
+let s:l = 133 - ((127 * winheight(0) + 31) / 63)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+133
+normal! 0
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+" vim: set ft=vim :
