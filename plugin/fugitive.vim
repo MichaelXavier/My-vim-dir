@@ -144,7 +144,7 @@ augroup fugitive
   autocmd BufNewFile,BufReadPost * call s:Detect(expand('<amatch>:p'))
   autocmd FileType           netrw call s:Detect(expand('<amatch>:p'))
   autocmd VimEnter * if expand('<amatch>')==''|call s:Detect(getcwd())|endif
-  autocmd BufWinLeave * execute getbufvar(+expand('<abuf>'), 'fugitive_restore')
+  autocmd BufWinLeave * execute getwinvar(+winnr(), 'fugitive_restore')
 augroup END
 
 " }}}1
@@ -999,8 +999,9 @@ endfunction
 call s:command("-bang -bar -nargs=? -complete=customlist,s:EditComplete Gdiff :execute s:Diff(<bang>0,<f-args>)")
 
 augroup fugitive_diff
-  autocmd BufWinLeave * if s:diff_window_count() == 2 && &diff && getbufvar(+expand('<abuf>'), 'git_dir') !=# '' | diffoff! | endif
-  autocmd BufWinEnter * if s:diff_window_count() == 1 && &diff && getbufvar(+expand('<abuf>'), 'git_dir') !=# '' | diffoff | endif
+  autocmd!
+  autocmd BufWinLeave * if s:diff_window_count() == 2 && &diff && getbufvar(+expand('<abuf>'), 'git_dir') !=# '' | execute 'windo call s:diff_off()' | endif
+  autocmd BufWinEnter * if s:diff_window_count() == 1 && &diff && getbufvar(+expand('<abuf>'), 'git_dir') !=# '' | call s:diff_off() | endif
 augroup END
 
 function! s:diff_window_count()
@@ -1009,6 +1010,12 @@ function! s:diff_window_count()
     let c += getwinvar(nr,'&diff')
   endfor
   return c
+endfunction
+
+function! s:diff_off()
+  if &l:diff
+    diffoff
+  endif
 endfunction
 
 function! s:buffer_compare_age(commit) dict abort
@@ -1038,14 +1045,14 @@ function! s:Diff(bang,...) abort
   if exists(':DiffGitCached')
     return 'DiffGitCached'
   elseif (!a:0 || a:1 == ':') && s:buffer().commit() =~# '^[0-1]\=$' && s:repo().git_chomp_in_tree('ls-files', '--unmerged', '--', s:buffer().path()) !=# ''
-      execute 'leftabove '.split.' `=fugitive#buffer().repo().translate(s:buffer().expand('':2''))`'
-      diffthis
-      wincmd p
-      execute 'rightbelow '.split.' `=fugitive#buffer().repo().translate(s:buffer().expand('':3''))`'
-      diffthis
-      wincmd p
-      diffthis
-      return ''
+    execute 'leftabove '.split.' `=fugitive#buffer().repo().translate(s:buffer().expand('':2''))`'
+    diffthis
+    wincmd p
+    execute 'rightbelow '.split.' `=fugitive#buffer().repo().translate(s:buffer().expand('':3''))`'
+    diffthis
+    wincmd p
+    diffthis
+    return ''
   elseif a:0
     if a:1 ==# ''
       return ''
@@ -1193,17 +1200,21 @@ function! s:Blame(bang,line1,line2,count,args) abort
       else
         let error = tempname()
         let temp = error.'.fugitiveblame'
-        silent! exe '%write !'.basecmd.' > '.temp.' 2> '.error
+        if &shell =~# 'csh'
+          silent! execute '%write !('.basecmd.' > '.temp.') >& '.error
+        else
+          silent! execute '%write !'.basecmd.' > '.temp.' 2> '.error
+        endif
         if v:shell_error
           call s:throw(join(readfile(error),"\n"))
         endif
         let bufnr = bufnr('')
-        let restore = 'call setbufvar('.bufnr.',"&scrollbind",0)'
+        let restore = 'call setwinvar(bufwinnr('.bufnr.'),"&scrollbind",0)'
         if &l:wrap
-          let restore .= '|call setbufvar('.bufnr.',"&wrap",1)'
+          let restore .= '|call setwinvar(bufwinnr('.bufnr.'),"&wrap",1)'
         endif
         if &l:foldenable
-          let restore .= '|call setbufvar('.bufnr.',"&foldenable",1)'
+          let restore .= '|call setwinvar(bufwinnr('.bufnr.'),"&foldenable",1)'
         endif
         let winnr = winnr()
         windo set noscrollbind
@@ -1215,7 +1226,7 @@ function! s:Blame(bang,line1,line2,count,args) abort
         let b:git_dir = git_dir
         let b:fugitive_type = 'blame'
         let b:fugitive_blamed_bufnr = bufnr
-        let b:fugitive_restore = restore
+        let w:fugitive_restore = restore
         let b:fugitive_blame_arguments = join(a:args,' ')
         call s:Detect(expand('%:p'))
         execute top
@@ -1424,7 +1435,11 @@ function! s:BufWriteIndexFile()
     endif
     let info = old_mode.' '.sha1.' '.stage."\t".path
     call writefile([info],tmp)
-    let error = system(s:repo().git_command('update-index','--index-info').' < '.tmp)
+    if has('win32')
+      let error = system('type '.tmp.'|'.s:repo().git_command('update-index','--index-info'))
+    else
+      let error = system(s:repo().git_command('update-index','--index-info').' < '.tmp)
+    endif
     if v:shell_error == 0
       setlocal nomodified
       silent execute 'doautocmd BufWritePost '.s:fnameescape(expand('%:p'))
