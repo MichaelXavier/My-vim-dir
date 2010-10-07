@@ -1,1 +1,2 @@
 LargeFile.vba: call delete('/home/michael/.vim/plugin/LargeFile.vim')|call delete('/home/michael/.vim/doc/LargeFile.txt')
+conque_1.1.vba: call delete('/home/michael/.vim/autoload/conque_term.vim')|call delete('/home/michael/.vim/doc/conque_term.txt')|call delete('/home/michael/.vim/plugin/conque_term.vim')|call delete('/home/michael/.vim/syntax/conque_term.vim')
