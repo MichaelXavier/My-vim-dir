@@ -1,3 +1,4 @@
 LargeFile.vba: call delete('/home/michael/.vim/plugin/LargeFile.vim')|call delete('/home/michael/.vim/doc/LargeFile.txt')
 conque_1.1.vba: call delete('/home/michael/.vim/autoload/conque_term.vim')|call delete('/home/michael/.vim/doc/conque_term.txt')|call delete('/home/michael/.vim/plugin/conque_term.vim')|call delete('/home/michael/.vim/syntax/conque_term.vim')
 visincr.vba: call delete('/home/michael/.vim/plugin/visincrPlugin.vim')|call delete('/home/michael/.vim/autoload/visincr.vim')|call delete('/home/michael/.vim/doc/visincr.txt')|call delete('/home/michael/.vim/autoload/calutil.vim')
+Align.vba: call delete('/home/michael/.vim/plugin/AlignPlugin.vim')|call delete('/home/michael/.vim/plugin/AlignMapsPlugin.vim')|call delete('/home/michael/.vim/plugin/cecutil.vim')|call delete('/home/michael/.vim/doc/Align.txt')|call delete('/home/michael/.vim/autoload/Align.vim')|call delete('/home/michael/.vim/autoload/AlignMaps.vim')
