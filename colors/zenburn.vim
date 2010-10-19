@@ -186,6 +186,7 @@ if &t_Co > 255
     hi WarningMsg      ctermfg=15    ctermbg=236     cterm=bold
     hi WildMenu        ctermbg=236   ctermfg=194     cterm=bold
     hi CursorLine      ctermbg=236   cterm=none
+    hi Pmenu           ctermbg=238
 
     if exists("g:zenburn_high_Contrast")
         hi Normal ctermfg=188 ctermbg=234
