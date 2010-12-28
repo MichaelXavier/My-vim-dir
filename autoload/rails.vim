@@ -44,6 +44,20 @@ function! s:compact(ary)
   return s:sub(s:sub(s:gsub(a:ary,'\n\n+','\n'),'\n$',''),'^\n','')
 endfunction
 
+function! s:uniq(list)
+  let seen = {}
+  let i = 0
+  while i < len(a:list)
+    if has_key(seen,a:list[i])
+      call remove(a:list, i)
+    else
+      let seen[a:list[i]] = 1
+      let i += 1
+    endif
+  endwhile
+  return a:list
+endfunction
+
 function! s:scrub(collection,item)
   " Removes item from a newline separated collection
   let col = "\n" . a:collection
@@ -510,7 +524,7 @@ function! rails#singularize(word)
     return word
   endif
   let word = s:sub(word,'eople$','ersons')
-  let word = s:sub(word,'[aeio]@<!ies$','ys')
+  let word = s:sub(word,'%([Mm]ov|[aeio])@<!ies$','ys')
   let word = s:sub(word,'xe[ns]$','xs')
   let word = s:sub(word,'ves$','fs')
   let word = s:sub(word,'ss%(es)=$','sss')
@@ -1846,7 +1860,7 @@ function! s:findamethod(func,repl)
 endfunction
 
 function! s:findasymbol(sym,repl)
-  return s:findit('\s*:\%('.a:sym.'\)\s*=>\s*(\=\s*[@:'."'".'"]\(\f\+\)\>.\=',a:repl)
+  return s:findit('\s*\%(:\%('.a:sym.'\)\s*=>\|\<'.a:sym.':\)\s*(\=\s*[@:'."'".'"]\(\f\+\)\>.\=',a:repl)
 endfunction
 
 function! s:findfromview(func,repl)
@@ -1901,10 +1915,10 @@ function! s:RailsFind()
   let res = s:findasymbol('to','app/controllers/\1')
   if res =~ '#'|return s:sub(res,'#','_controller.rb#')|endif
 
-  let res = s:findamethod('root\s*:to\s*=>\s*','app/controllers/\1')
+  let res = s:findamethod('root\s*\%(:to\s*=>\|\<to:\)\s*','app/controllers/\1')
   if res =~ '#'|return s:sub(res,'#','_controller.rb#')|endif
 
-  let res = s:findamethod('\%(match\|get\|put\|post\|delete\|redirect\)\s*(\=\s*[:''"][^''"]*[''"]\=\s*\%(,\s*:to\s*\)\==>\s*','app/controllers/\1')
+  let res = s:findamethod('\%(match\|get\|put\|post\|delete\|redirect\)\s*(\=\s*[:''"][^''"]*[''"]\=\s*\%(\%(,\s*:to\s*\)\==>\|,\s*to:\)\s*','app/controllers/\1')
   if res =~ '#'|return s:sub(res,'#','_controller.rb#')|endif
 
   let res = s:findamethod('layout','\=s:findlayout(submatch(1))')
@@ -1928,17 +1942,17 @@ function! s:RailsFind()
   let res = s:sub(s:sub(s:findasymbol('partial','\1'),'^/',''),'\k+$','_&')
   if res != ""|return res."\n".s:findview(res)|endif
 
-  let res = s:sub(s:sub(s:findfromview('render\s*(\=\s*:partial\s\+=>\s*','\1'),'^/',''),'\k+$','_&')
+  let res = s:sub(s:sub(s:findfromview('render\s*(\=\s*\%(:partial\s\+=>\|partial:\)\s*','\1'),'^/',''),'\k+$','_&')
   if res != ""|return res."\n".s:findview(res)|endif
 
-  let res = s:findamethod('render\s*:\%(template\|action\)\s\+=>\s*','\1.'.format.'\n\1')
+  let res = s:findamethod('render\>\s*\%(:\%(template\|action\)\s\+=>\|template:\|action:\)\s*','\1.'.format.'\n\1')
   if res != ""|return res|endif
 
   let res = s:sub(s:findfromview('render','\1'),'^/','')
   if buffer.type_name('view') | let res = s:sub(res,'[^/]+$','_&') | endif
   if res != ""|return res."\n".s:findview(res)|endif
 
-  let res = s:findamethod('redirect_to\s*(\=\s*:action\s\+=>\s*','\1')
+  let res = s:findamethod('redirect_to\s*(\=\s*\%\(:action\s\+=>\|\<action:\)\s*','\1')
   if res != ""|return res|endif
 
   let res = s:findfromview('stylesheet_link_tag','public/stylesheets/\1')
@@ -2229,7 +2243,12 @@ function! s:layoutList(A,L,P)
 endfunction
 
 function! s:stylesheetList(A,L,P)
-  return s:completion_filter(rails#app().relglob("public/stylesheets/","**/*",".css"),a:A)
+  let list = rails#app().relglob('public/stylesheets/','**/*','.css')
+  if rails#app().has('sass')
+    call extend(list,rails#app().relglob('public/stylesheets/sass/','**/*','.s?ss'))
+    call s:uniq(list)
+  endif
+  return s:completion_filter(list,a:A)
 endfunction
 
 function! s:javascriptList(A,L,P)
@@ -3768,7 +3787,7 @@ endfunction
 
 function! s:addtostatus(letter,status)
   let status = a:status
-  if status !~ 'rails' && g:rails_statusline
+  if status !~ 'rails' && status !~ '^%!' && g:rails_statusline
     let   status=substitute(status,'\C%'.tolower(a:letter),'%'.tolower(a:letter).'%{rails#statusline()}','')
     if status !~ 'rails'
       let status=substitute(status,'\C%'.toupper(a:letter),'%'.toupper(a:letter).'%{rails#STATUSLINE()}','')
