@@ -1,3 +1,56 @@
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
+set t_Co=256
+set nocompatible
+syntax on
+filetype plugin indent on
+set history=50
+set wildmode=list:longest,full
+set shortmess+=r
+set showmode
+set showcmd
+set clipboard=unnamed
+execute 'set listchars+=tab:' . nr2char(187) . nr2char(183)
+set mouse=a
+set nowrap
+set shiftround
+set expandtab
+set ts=2
+set sw=2
+set autoindent
+set formatoptions-=t
+"set textwidth=79
+set whichwrap=h,l,~,[,]
+set backspace=indent,eol,start
+set nobackup
+set nowritebackup
+colorscheme zenburn
+"disable this autocomment bullshit
+au FileType * setl fo-=cro
+"f6 to cyckle through split windows, shift f6 for backwards
+nnoremap <F6> <C-W>w
+nnoremap <S-F6> <C-W>W
+"ctrl n and ctrl p cycling through files
+nnoremap <C-N> :next<CR>
+nnoremap <C-P> :prev<CR>
+set matchpairs+=<:>
+nnoremap <F1> :help<Space>
+vmap <F1> <C-C><F1>
+omap <F1> <C-C><F1>
+map! <F1> <C-C><F1>
+set backspace=eol,start,indent
+"inoremap <Tab> <C-T>
+"inoremap <S-Tab> <C-D>
+" \hc ("HTML close") inserts the tag needed to close the current HTML
+" construct
+
+set number
+
+"ctrl-b maps to open a browser pane
+nnoremap <silent> <C-b> :NERDTreeToggle<cr>
+nnoremap <silent> <F8> :TlistToggle<CR>
+
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
@@ -5,10 +58,10 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
-autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+"autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 autocmd FileType ruby,perl,tex set shiftwidth=2
  
-autocmd FileType c,cpp,java,javascript,python,xml,xhtml,html set shiftwidth=2
+"autocmd FileType c,cpp,java,javascript,python,xml,xhtml,html set shiftwidth=2
  
 augroup filetypedetect
   au! BufNewFile,BufRead *.ch setf cheat
@@ -17,7 +70,7 @@ augroup filetypedetect
   autocmd BufNewFile,BufRead *.yml setf eruby
 augroup END
  
-autocmd BufNewFile,BufRead *_test.rb source ~/.vim/ftplugin/shoulda.vim
+"autocmd BufNewFile,BufRead *_test.rb source ~/.vim/ftplugin/shoulda.vim
 "use \rci in normal mode to indent ruby code,should install kode ,sudo gem
 "install kode
 nmap <leader>rci :%!ruby-code-indenter<cr>
@@ -25,7 +78,7 @@ nmap <leader>rci :%!ruby-code-indenter<cr>
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 0
 " Load matchit (% to bounce from do to end, etc.)
 runtime! plugin/matchit.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -39,21 +92,29 @@ let g:miniBufExplModSelTarget = 1
 " Change which file opens after executing :Rails command
 let g:rails_default_file='config/database.yml'
  
-set nocompatible          " We're running Vim, not Vi!
-set guifont=Monaco:h13
+"set nocompatible          " We're running Vim, not Vi!
+set guifont=Monaco:h8
 set guitablabel=%M%t
-set nobackup
-set nowritebackup
+"set nobackup
+"set nowritebackup
 set path=$PWD/public/**,$PWD/**
 filetype plugin indent on " Enable filetype-specific indenting and plugins
 set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
 set guioptions-=m
-set statusline=%<%f\ %h%m%r%=%-20.(line=%l,col=%c%V,totlin=%L%)\%h%m%r%=%-40(,%n%Y%)\%P
+set statusline=%<%f\ %{fugitive#statusline()}\ %h%m%r%=%-20.(line=%l,col=%c%V,totlin=%L%)\%h%m%r%=%-40(,%n%Y%)\%P
+" Syntastic stuff
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_enable_signs = 1
+map <leader>e :Errors<CR>
+
 set laststatus=2
+
 
 map <C-q> :mksession! ~/.vim/.session <cr>
 map <C-//> map ,# :s/^/#/<CR>
-map <S-//> :s/^\/\/\\|^--\\|^> \\|^[#"%!;]//<CR><Esc>:nohlsearch<CR>
+"map <S-//> :s/^\/\/\\|^--\\|^> \\|^[#"%!;]//<CR><Esc>:nohlsearch<CR>
 imap <M-Up> :tabn<CR>
 imap <M-Down> :tabp<CR>
 imap <c-s> <esc><c-s>
@@ -90,10 +151,7 @@ nnoremap <C-L> :nohls<CR><C-L>
 inoremap <C-L> <C-O>:nohls<CR>
 
 "map to bufexplorer
-nnoremap <C-B> :BufExplorer<cr>
-
-"map to fuzzy finder text mate stylez
-nnoremap <c-t> :FuzzyFinderTextMate<CR>
+"nnoremap <C-B> :BufExplorer<cr>
 
 "map Q to something useful
 noremap Q gq
@@ -101,19 +159,23 @@ noremap Q gq
 "make Y consistent with C and D
 nnoremap Y y$
 
+map <leader>t :FuzzyFinderTextMate<CR>
 map <leader>b :FuzzyFinderBuffer<CR>
 map <leader>] :FuzzyFinderMruFile<CR>
 map <leader>r :ruby finder.rescan!<CR>
 map ,t :Rake<CR>
 
 let g:proj_flags="imstg"
-let g:fuzzy_ceiling=20000
+let g:fuzzy_roots="app\nlib\nconfig\npublic/javascripts\npublic/stylesheets\nfeatures\nspec\nsrc\ntest"
+let g:fuzzy_ceiling=30000
 let g:fuzzy_matching_limit=25
-let g:fuzzy_ignore = "gems/*, log/*"
+let g:fuzzy_ignore="gems/**, log/**, public/**, vendor/**, public/images/**, public/themes/**, tmp/**, *.gem, *.log, *.db, *.sqlite*, doc/**, rdoc/**, *.png, *.jp*g, *.PNG, *.JP*G, *.GIF"
 set cursorline
+set cursorcolumn
 
 "folding settings
-set foldmethod=indent   "fold based on indent
+" syntax folding is slow as hell on most of my systems
+set foldmethod=indent
 set foldnestmax=3       "deepest fold is 3 levels
 set nofoldenable        "dont fold by default
 
@@ -132,7 +194,6 @@ set history=256  " Number of things to remember in history.
 set autowrite  " Writes on make/shell commands
 set ruler  " Ruler on
 set nu  " Line numbers on
-set nowrap  " Line wrapping off
 set timeoutlen=250  " Time to wait after ESC (default causes an annoying delay)
 " colorscheme vividchalk  " Uncomment this to set a default theme
  
@@ -234,3 +295,49 @@ if &term == 'xterm' && $HOSTNAME == 'localhost'
     set t_Co=256
     let g:CSApprox_konsole = 1
 endif
+"disable showmarks by default
+let g:showmarks_enable=0
+
+"ragtag global default bindings
+let g:ragtag_global_maps = 1
+
+"mxml is xml
+au BufNewFile,BufRead *.mxml set filetype=xml
+
+"rebind my favorite commands from Git.vim for Fugitive
+nmap <leader>ga :Gwrite<cr>
+nmap <leader>gs :Gstatus<cr>
+nmap <leader>gc :Gcommit<cr>
+nmap <leader>gl :Glog<cr>
+nmap <leader>gd :Gdiff<cr>
+nmap <leader>gb :Gblame<cr>
+
+"ack binding
+let g:ackprg="ack -H --nocolor --nogroup"
+map <leader>a :Ack
+
+"Conque shell
+map <leader>ct :ConqueTermTab
+map <leader>cs :ConqueTermSplit
+
+" Shut the hell up NERD
+let g:NERDShutUp=1
+
+" Swap word with next word
+nmap <silent> gw    "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<cr><c-o><c-l> *N*
+
+nnoremap <F5> :GundoToggle<CR>
+
+set hlsearch
+
+"sparkup settings
+let g:sparkupNextMapping='<c-m>'
+
+"erlang likes 4 space tabbing
+autocmd FileType erlang setlocal sw=4 ts=4
+
+" This command annoys me
+map K <Nop>
+
+set colorcolumn=81
+nmap <leader>R :RainbowParenthesesToggle<cr>
