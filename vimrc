@@ -10,7 +10,6 @@ set history=50
 set wildmode=list:longest,full
 set shortmess+=r
 set showmode
-set showcmd
 set clipboard=unnamed
 execute 'set listchars+=tab:' . nr2char(187) . nr2char(183)
 set mouse=a
@@ -341,3 +340,8 @@ map K <Nop>
 
 set colorcolumn=81
 nmap <leader>R :RainbowParenthesesToggle<cr>
+
+" Optimizations for my evidently slow terminals
+set showcmd
+set scrolljump=5
+hi NonText cterm=NONE ctermfg=NONE
