@@ -184,3 +184,5 @@ nmap <leader>R :RainbowParenthesesToggle<cr>
 set showcmd
 set scrolljump=5
 hi NonText cterm=NONE ctermfg=NONE
+
+:nmap <F1> <nop>
