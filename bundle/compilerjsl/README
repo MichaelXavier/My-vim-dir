@@ -1,0 +1,9 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=2630
+
+Compiler plugin for JavaScript Lint (http://www.javascriptlint.com), an (open
+source) checker for JavaScript syntax and coding techniques based on the Mozilla
+Firefox JavaScript engine. 
+
+This is similar to vimscript #2578 and vimscript #2729, but this script uses
+Vim's compiler infrastructure (so checks are triggered by the :make command),
+making its use consistent with syntax checkers for other languages. 
