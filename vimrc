@@ -186,3 +186,5 @@ set scrolljump=5
 hi NonText cterm=NONE ctermfg=NONE
 
 :nmap <F1> <nop>
+
+nmap <leader>m :make<cr>
