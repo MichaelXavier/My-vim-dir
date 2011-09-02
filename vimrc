@@ -188,3 +188,11 @@ hi NonText cterm=NONE ctermfg=NONE
 :nmap <F1> <nop>
 
 nmap <leader>m :make<cr>
+
+
+" Better have terminal pause disabled
+:map <silent> <c-s> :if expand("%") == ""<CR>:browse confirm w<CR>:else<CR>:confirm w<CR>:endif<CR>
+" Works in insert mode, skips confirm dialog
+:imap <c-s> <c-o><c-s>
+
+:map <silent> <c-q> :confirm q<CR>
