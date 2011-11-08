@@ -164,6 +164,7 @@ nmap <leader>gc :Gcommit<cr>
 nmap <leader>gl :Glog<cr>
 nmap <leader>gd :Gdiff<cr>
 nmap <leader>gb :Gblame<cr>
+nmap <leader>du :diffupdate<cr>
 
 " ack binding
 let g:ackprg="ack -H --nocolor --nogroup"
