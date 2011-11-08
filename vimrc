@@ -161,9 +161,11 @@ let g:ragtag_global_maps = 1 " ragtag global default bindings
 nmap <leader>ga :Gwrite<cr>
 nmap <leader>gs :Gstatus<cr>
 nmap <leader>gc :Gcommit<cr>
-nmap <leader>gl :Glog<cr>
+nmap <leader>gl :Glog 
 nmap <leader>gd :Gdiff<cr>
 nmap <leader>gb :Gblame<cr>
+nmap <leader>gr :Gremove
+nmap <leader>gw :Gbrowse<cr>
 nmap <leader>du :diffupdate<cr>
 
 " ack binding
