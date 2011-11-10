@@ -168,6 +168,7 @@ nmap <leader>gr :Gremove
 nmap <leader>gw :Gbrowse<cr>
 nmap <leader>du :diffupdate<cr>
 nmap <leader>co :copen<cr>
+nmap <leader>gg :Ggrep 
 
 " ack binding
 let g:ackprg="ack -H --nocolor --nogroup"
