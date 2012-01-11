@@ -170,6 +170,9 @@ nmap <leader>du :diffupdate<cr>
 nmap <leader>co :copen<cr>
 nmap <leader>gg :Ggrep 
 
+" quickfix bindings
+nmap <leader>cn :cn<cr>
+
 " ack binding
 let g:ackprg="ack -H --nocolor --nogroup"
 map <leader>a :Ack
