@@ -167,11 +167,14 @@ nmap <leader>gb :Gblame<cr>
 nmap <leader>gr :Gremove
 nmap <leader>gw :Gbrowse<cr>
 nmap <leader>du :diffupdate<cr>
-nmap <leader>co :copen<cr>
 nmap <leader>gg :Ggrep 
+nmap <leader>co :copen<cr>
 
 " quickfix bindings
 nmap <leader>cn :cn<cr>
+
+" previous file
+nmap <leader><leader> <C-^>
 
 " ack binding
 let g:ackprg="ack -H --nocolor --nogroup"
