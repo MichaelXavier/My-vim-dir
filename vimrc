@@ -36,8 +36,7 @@ set backspace=eol,start,indent
 " line numbers
 set number
 
-" ctrl-b maps to open a browser pane
-nnoremap <silent> <C-b> :NERDTreeToggle<cr>
+map <leader>n :NERDTreeToggle<cr>
 
 " language-specific completions
 autocmd FileType python set omnifunc=pythoncomplete#Complete
