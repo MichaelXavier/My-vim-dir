@@ -168,6 +168,7 @@ nmap <leader>gw :Gbrowse<cr>
 nmap <leader>du :diffupdate<cr>
 nmap <leader>gg :Ggrep 
 nmap <leader>co :copen<cr>
+nmap <leader>to :tabo \| only<cr>
 
 " quickfix bindings
 nmap <leader>cn :cn<cr>
