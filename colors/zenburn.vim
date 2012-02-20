@@ -133,6 +133,7 @@ if &t_Co > 255
     hi Character       ctermfg=181   cterm=bold
     hi Comment         ctermfg=108   
     hi Conditional     ctermfg=223   cterm=bold
+    hi ColorColumn     ctermbg=234
     hi Constant        ctermfg=181   cterm=bold
     hi Cursor          ctermfg=233   ctermbg=109     cterm=bold
     hi Debug           ctermfg=181   cterm=bold
