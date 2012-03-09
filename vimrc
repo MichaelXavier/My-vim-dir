@@ -96,17 +96,6 @@ inoremap <C-L> <C-O>:nohls<CR>
 "make Y consistent with C and D (yank to EOL)
 nnoremap Y y$
 
-" FuzzyFinder setup
-map <leader>t :FuzzyFinderTextMate<CR>
-map <leader>b :FuzzyFinderBuffer<CR>
-map <leader>] :FuzzyFinderMruFile<CR>
-map <leader>r :ruby finder.rescan!<CR>
-let g:proj_flags="imstg"
-let g:fuzzy_roots="app\nlib\nconfig\npublic/javascripts\npublic/stylesheets\nfeatures\nspec\nsrc\ntest"
-let g:fuzzy_ceiling=30000
-let g:fuzzy_matching_limit=25
-let g:fuzzy_ignore="gems/**, log/**, public/**, vendor/**, public/images/**, public/themes/**, tmp/**, *.gem, *.log, *.db, *.sqlite*, doc/**, rdoc/**, *.png, *.jp*g, *.PNG, *.JP*G, *.GIF"
-
 " Cursor crosshair because I'm a cool guy
 " SAD! these turn out to be very slow
 "set cursorline
