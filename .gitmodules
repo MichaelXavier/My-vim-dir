@@ -85,3 +85,6 @@
 [submodule "bundle/Command-T"]
 	path = bundle/Command-T
 	url = https://github.com/wincent/Command-T.git
+[submodule "bundle/eunuch"]
+	path = bundle/eunuch
+	url = https://github.com/tpope/vim-eunuch.git
