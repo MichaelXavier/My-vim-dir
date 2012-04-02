@@ -180,6 +180,9 @@ set colorcolumn=81
 
 nmap <leader>R :RainbowParenthesesToggle<cr>
 
+"Refresh CommandT
+nmap <leader>r :CommandTFlush<cr>
+
 " Optimizations for my evidently slow terminals
 set showcmd
 set scrolljump=5
