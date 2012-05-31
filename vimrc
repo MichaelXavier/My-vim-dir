@@ -194,6 +194,12 @@ hi NonText cterm=NONE ctermfg=NONE
 
 nmap <leader>m :make<cr>
 
+" move around splits with <c-hjkl>
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+nnoremap <c-h> <c-w>h
+
 
 " Better have terminal pause disabled
 :map <silent> <c-s> :if expand("%") == ""<CR>:browse confirm w<CR>:else<CR>:confirm w<CR>:endif<CR>
