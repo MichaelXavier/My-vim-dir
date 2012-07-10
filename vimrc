@@ -89,10 +89,6 @@ map <leader>e :Errors<CR>
 " Last window should always have a status line
 set laststatus=2
 
-"make <c-l> clear the highlight as well as redraw
-nnoremap <C-L> :nohls<CR><C-L>
-inoremap <C-L> <C-O>:nohls<CR>
-
 "make Y consistent with C and D (yank to EOL)
 nnoremap Y y$
 
@@ -209,3 +205,5 @@ nnoremap <c-h> <c-w>h
 :imap <c-s> <c-o><c-s>
 
 :map <silent> <c-q> :confirm q<CR>
+
+unmap <C-L>
