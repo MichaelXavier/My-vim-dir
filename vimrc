@@ -200,9 +200,6 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 nnoremap <c-h> <c-w>h
 
-" insert hashrocket with <c-l> in insert
-imap <c-l> <space>=><space>
-
 " clear search buffer when hitting return
 :nnoremap <CR> :nohlsearch<CR>
 
