@@ -24,7 +24,8 @@ set autoindent
 set formatoptions-=t
 set nobackup
 set nowritebackup
-colorscheme Tomorrow-Night
+"colorscheme Tomorrow-Night
+colorscheme pyte
 
 " disable this autocomment bullshit
 au FileType * setl fo-=cro
@@ -207,3 +208,13 @@ nnoremap <c-h> <c-w>h
 :map <silent> <c-q> :confirm q<CR>
 
 unmap <C-L>
+
+" GVIM stuff
+set guioptions+=lrbmTLce
+set guioptions-=lrbmTLce
+set guioptions+=c
+set gfn=Terminus\ 7  
+
+" list and invisible characters
+set list
+set listchars=tab:»\ ,eol:¬
