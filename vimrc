@@ -214,7 +214,8 @@ set guioptions+=lrbmTLce
 set guioptions-=lrbmTLce
 set guioptions+=c
 "set gfn=Terminus\ 7
-set gfn=Source\ Code\ Pro\ Light\ 7
+set gfn=Source\ Code\ Pro\ 7
+set lsp=-5
 
 " list and invisible characters
 set list
