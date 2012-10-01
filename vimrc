@@ -198,7 +198,7 @@ nnoremap <c-l> <c-w>l
 nnoremap <c-h> <c-w>h
 
 " clear search buffer when hitting return
-:nnoremap <CR> :nohlsearch<CR>
+":nnoremap <CR> :nohlsearch<CR>
 
 " Better have terminal pause disabled
 :map <silent> <c-s> :if expand("%") == ""<CR>:browse confirm w<CR>:else<CR>:confirm w<CR>:endif<CR>
@@ -213,7 +213,8 @@ unmap <C-L>
 set guioptions+=lrbmTLce
 set guioptions-=lrbmTLce
 set guioptions+=c
-set gfn=Terminus\ 7  
+"set gfn=Terminus\ 7
+set gfn=Source\ Code\ Pro\ Light\ 7
 
 " list and invisible characters
 set list
