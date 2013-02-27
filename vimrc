@@ -24,8 +24,8 @@ set autoindent
 set formatoptions-=t
 set nobackup
 set nowritebackup
-"colorscheme Tomorrow-Night
-colorscheme pyte
+colorscheme Tomorrow-Night
+"colorscheme pyte
 
 " disable this autocomment bullshit
 au FileType * setl fo-=cro
