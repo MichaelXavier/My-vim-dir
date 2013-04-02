@@ -220,3 +220,5 @@ set lsp=-2
 " list and invisible characters
 set list
 set listchars=tab:»\ ,eol:¬
+
+let g:instant_markdown_slow = 1
