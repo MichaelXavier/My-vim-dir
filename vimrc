@@ -213,7 +213,7 @@ nnoremap <c-h> <c-w>h
 set guioptions+=lrbmTLce
 set guioptions-=lrbmTLce
 set guioptions+=c
-source font_config
+source ~/.vim/font_config
 set lsp=-4
 
 " list and invisible characters
