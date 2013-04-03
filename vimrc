@@ -191,6 +191,8 @@ hi NonText cterm=NONE ctermfg=NONE
 
 nmap <leader>m :make<cr>
 
+unmap <C-L>
+
 " move around splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
@@ -207,15 +209,13 @@ nnoremap <c-h> <c-w>h
 
 :map <silent> <c-q> :confirm q<CR>
 
-unmap <C-L>
-
 " GVIM stuff
 set guioptions+=lrbmTLce
 set guioptions-=lrbmTLce
 set guioptions+=c
 "set gfn=Terminus\ 7
-set gfn=Source\ Code\ Pro\ 11
-set lsp=-2
+set gfn=Source\ Code\ Pro\ 7
+set lsp=-4
 
 " list and invisible characters
 set list
