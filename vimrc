@@ -24,8 +24,8 @@ set autoindent
 set formatoptions-=t
 set nobackup
 set nowritebackup
-colorscheme Tomorrow-Night
-"colorscheme pyte
+"colorscheme Tomorrow-Night
+colorscheme pyte
 
 " disable this autocomment bullshit
 au FileType * setl fo-=cro
@@ -221,3 +221,6 @@ set list
 set listchars=tab:»\ ,eol:¬
 
 let g:instant_markdown_slow = 1
+
+" do not complete with included files
+set complete-=i
