@@ -213,6 +213,8 @@ nnoremap <c-h> <c-w>h
 set guioptions+=lrbmTLce
 set guioptions-=lrbmTLce
 set guioptions+=c
+" no autocopy
+set guioptions-=a
 source ~/.vim/font_config
 set lsp=-4
 
