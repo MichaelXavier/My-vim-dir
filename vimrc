@@ -226,3 +226,5 @@ let g:instant_markdown_slow = 1
 
 " do not complete with included files
 set complete-=i
+
+set tags+=gems.tags
