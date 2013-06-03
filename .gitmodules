@@ -115,3 +115,6 @@
 [submodule "bundle/vim-misc"]
 	path = bundle/vim-misc
 	url = git://github.com/xolox/vim-misc.git
+[submodule "bundle/vim-proto"]
+	path = bundle/vim-proto
+	url = git://github.com/brandonbloom/vim-proto.git
