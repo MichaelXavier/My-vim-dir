@@ -231,3 +231,6 @@ set tags+=gems.tags
 
 let g:notes_directories = ['~/Dropbox/Notes']
 let g:notes_suffix = '.md'
+
+" looks like i've got some inefficient syntax highlighting
+set maxmempattern=2000
