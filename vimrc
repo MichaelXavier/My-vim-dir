@@ -24,8 +24,8 @@ set autoindent
 set formatoptions-=t
 set nobackup
 set nowritebackup
-"colorscheme Tomorrow-Night
-colorscheme pyte
+colorscheme Tomorrow-Night
+"colorscheme pyte
 
 " disable this autocomment bullshit
 au FileType * setl fo-=cro
@@ -228,3 +228,6 @@ let g:instant_markdown_slow = 1
 set complete-=i
 
 set tags+=gems.tags
+
+let g:notes_directories = ['~/Dropbox/Notes']
+let g:notes_suffix = '.md'
