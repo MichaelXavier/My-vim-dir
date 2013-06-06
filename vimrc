@@ -24,8 +24,8 @@ set autoindent
 set formatoptions-=t
 set nobackup
 set nowritebackup
-colorscheme Tomorrow-Night
-"colorscheme pyte
+"colorscheme Tomorrow-Night
+colorscheme pyte
 
 " disable this autocomment bullshit
 au FileType * setl fo-=cro
@@ -105,7 +105,7 @@ set nofoldenable            " dont fold by default
 
 set wildmode=list:longest   " make cmdline tab completion similar to bash
 set wildmenu                " enable ctrl-n and ctrl-p to scroll thru matches
-set wildignore=*.o,*.obj,*~ " stuff to ignore when tab completing
+set wildignore=*.o,*.obj,*~,*.swp,*.swo " stuff to ignore when tab completing
 
 "vertical/horizontal scroll off settings for readability
 set scrolloff=3
