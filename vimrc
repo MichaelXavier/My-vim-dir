@@ -24,8 +24,6 @@ set autoindent
 set formatoptions-=t
 set nobackup
 set nowritebackup
-"colorscheme Tomorrow-Night
-colorscheme pyte
 
 " disable this autocomment bullshit
 au FileType * setl fo-=cro
@@ -216,7 +214,9 @@ set guioptions-=lrbmTLce
 set guioptions+=c
 " no autocopy
 set guioptions-=a
-source ~/.vim/font_config
+
+source ~/.vim/per_machine_config
+
 set lsp=-4
 
 " list and invisible characters
