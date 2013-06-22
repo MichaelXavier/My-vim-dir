@@ -118,3 +118,6 @@
 [submodule "bundle/vim-proto"]
 	path = bundle/vim-proto
 	url = git://github.com/brandonbloom/vim-proto.git
+[submodule "bundle/YankRing"]
+	path = bundle/YankRing
+	url = https://github.com/vim-scripts/YankRing.vim.git
