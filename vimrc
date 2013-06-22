@@ -190,7 +190,7 @@ hi NonText cterm=NONE ctermfg=NONE
 
 nmap <leader>m :make<cr>
 
-unmap <C-L>
+silent! unmap <C-L>
 
 " move around splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
