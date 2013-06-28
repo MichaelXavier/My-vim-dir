@@ -163,7 +163,7 @@ nmap <leader><leader> <C-^>
 
 " ack binding
 let g:ackprg="ack -H --nocolor --nogroup --column"
-map <leader>a :Ack 
+map <leader>a :Ack <C-r><C-w> 
 
 " Shut the hell up NERD
 let g:NERDShutUp=1
