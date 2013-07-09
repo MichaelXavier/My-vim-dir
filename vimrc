@@ -214,8 +214,6 @@ set guioptions+=c
 " no autocopy
 set guioptions-=a
 
-source ~/.vim/per_machine_config
-
 set lsp=-4
 
 " list and invisible characters
@@ -234,3 +232,5 @@ let g:notes_suffix = '.md'
 
 " looks like i've got some inefficient syntax highlighting
 set maxmempattern=2000
+
+source ~/.vim/per_machine_config
