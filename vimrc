@@ -11,7 +11,6 @@ set history=50
 set wildmode=list:longest,full
 set shortmess+=r
 set showmode
-set clipboard=unnamed
 set mouse=a
 set nowrap
 set shiftround
