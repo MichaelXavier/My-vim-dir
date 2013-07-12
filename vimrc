@@ -75,12 +75,12 @@ filetype plugin indent on
 set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
 
 " Fancy statusline
-set statusline=%<%f\ %{fugitive#statusline()}\ %h%m%r%=%-20.(line=%l,col=%c%V,totlin=%L%)\%h%m%r%=%-40(,%n%Y%)\%P
+"set statusline=%<%f\ %{fugitive#statusline()}\ %h%m%r%=%-20.(line=%l,col=%c%V,totlin=%L%)\%h%m%r%=%-40(,%n%Y%)\%P
 " Syntastic stuff for status line
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_enable_signs = 1
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"let g:syntastic_enable_signs = 1
 
 " Show errors
 map <leader>e :Errors<CR>
@@ -232,5 +232,9 @@ let g:notes_suffix = '.md'
 
 " looks like i've got some inefficient syntax highlighting
 set maxmempattern=2000
+
+" airline config
+let g:airline_theme='light'
+let g:airline_powerline_fonts=0
 
 source ~/.vim/per_machine_config
