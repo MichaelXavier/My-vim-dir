@@ -33,6 +33,7 @@ set backspace=eol,start,indent
 
 " line numbers
 set relativenumber
+set nu
 
 map <leader>n :NERDTreeToggle<cr>
 
