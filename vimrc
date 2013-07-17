@@ -32,7 +32,8 @@ set matchpairs+=<:>
 set backspace=eol,start,indent
 
 " line numbers
-set relativenumber
+set nu
+set rnu
 
 map <leader>n :NERDTreeToggle<cr>
 
