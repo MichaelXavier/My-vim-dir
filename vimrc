@@ -111,7 +111,7 @@ set scrolloff=3
 set sidescrolloff=7
 set sidescroll=1
 
-set clipboard+=unnamedplus
+set clipboard+=unnamed
 set ruler                   " Ruler on
 set timeoutlen=250          " Time to wait after ESC (default causes an annoying delay)
 set incsearch               " Incremental search results
