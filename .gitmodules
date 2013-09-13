@@ -127,3 +127,9 @@
 [submodule "bundle/solarized"]
 	path = bundle/solarized
 	url = git@github.com:altercation/vim-colors-solarized.git
+[submodule "bundle/vimproc"]
+	path = bundle/vimproc
+	url = https://github.com/Shougo/vimproc.vim.git
+[submodule "bundle/ghcmod"]
+	path = bundle/ghcmod
+	url = https://github.com/eagletmt/ghcmod-vim.git

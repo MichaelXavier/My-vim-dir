@@ -238,4 +238,10 @@ set maxmempattern=2000
 let g:airline_theme='light'
 let g:airline_powerline_fonts=0
 
+let g:syntastic_mode_map = { 'mode': 'active',
+                            \ 'active_filetypes': [],
+                            \ 'passive_filetypes': ['haskell'] }
+
+
 source ~/.vim/per_machine_config
+source ~/.vim/ghcmod_config.vim
