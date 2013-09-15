@@ -242,6 +242,10 @@ let g:syntastic_mode_map = { 'mode': 'active',
                             \ 'active_filetypes': [],
                             \ 'passive_filetypes': ['haskell'] }
 
+augroup markdown
+    au!
+    au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+augroup END
 
 source ~/.vim/per_machine_config
 source ~/.vim/ghcmod_config.vim
