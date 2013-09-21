@@ -247,5 +247,7 @@ augroup markdown
     au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
 augroup END
 
+:map <leader>mm :Mm<CR>
+
 source ~/.vim/per_machine_config
 source ~/.vim/ghcmod_config.vim
