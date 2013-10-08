@@ -179,7 +179,7 @@ nmap <leader>R :RainbowParenthesesToggle<cr>
 "Refresh CommandT
 nmap <leader>r :CommandTFlush<cr>
 
-set wildignore+=*.o,*.obj,.git,*.sql,*.png,*.ico,*.jp*g,*.gif,*.psd
+set wildignore+=*.o,*.obj,.git,*.png,*.ico,*.jp*g,*.gif,*.psd
 
 " Optimizations for my evidently slow terminals
 set showcmd
