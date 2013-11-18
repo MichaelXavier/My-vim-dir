@@ -242,6 +242,15 @@ let g:syntastic_mode_map = { 'mode': 'active',
                             \ 'active_filetypes': [],
                             \ 'passive_filetypes': ['haskell'] }
 
+augroup markdown
+    au!
+    au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+augroup END
+
+:map <leader>mm :Mm<CR>
+
+" Get rid of extremely annoying ri tooltip
+setlocal balloonexpr=
 
 source ~/.vim/per_machine_config
 source ~/.vim/ghcmod_config.vim
