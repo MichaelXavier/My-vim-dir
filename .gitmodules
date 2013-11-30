@@ -139,3 +139,6 @@
 [submodule "bundle/vim-markdown-preview"]
 	path = bundle/vim-markdown-preview
 	url = https://github.com/nelstrom/vim-markdown-preview.git
+[submodule "bundle/typescript-vim"]
+	path = bundle/typescript-vim
+	url = git@github.com:leafgarland/typescript-vim.git
