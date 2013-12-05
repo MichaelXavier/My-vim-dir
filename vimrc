@@ -252,5 +252,12 @@ augroup END
 " Get rid of extremely annoying ri tooltip
 setlocal balloonexpr=
 
+" Open quickfix on :make errors
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+
+" don't redraw if you don't have to
+set lazyredraw
+
 source ~/.vim/per_machine_config
 source ~/.vim/ghcmod_config.vim
