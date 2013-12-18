@@ -259,5 +259,8 @@ autocmd QuickFixCmdPost    l* nested lwindow
 " don't redraw if you don't have to
 set lazyredraw
 
+" leader w = toggle wrap
+map <leader>w :set wrap!<CR>
+
 source ~/.vim/per_machine_config
 source ~/.vim/ghcmod_config.vim
