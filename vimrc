@@ -180,6 +180,7 @@ nmap <leader>R :RainbowParenthesesToggle<cr>
 nmap <leader>r :CommandTFlush<cr>
 
 set wildignore+=*.o,*.obj,.git,*.png,*.ico,*.jp*g,*.gif,*.psd
+set wildignore+=node_modules/**
 
 " Optimizations for my evidently slow terminals
 set showcmd
