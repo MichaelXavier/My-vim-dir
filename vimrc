@@ -1,6 +1,8 @@
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
+let $GOPATH=$HOME
+
 let mapleader = ","
 set t_Co=256
 
@@ -23,6 +25,7 @@ set autoindent
 set formatoptions-=t
 set nobackup
 set nowritebackup
+set background=dark
 
 " disable this autocomment bullshit
 au FileType * setl fo-=cro
@@ -162,7 +165,7 @@ nmap <leader>cn :cn<cr>
 nmap <leader><leader> <C-^>
 
 " ack binding
-let g:ackprg="ack -H --nocolor --nogroup --column"
+let g:ackprg = 'ag --nogroup --nocolor --column'
 map <leader>a :Ack <C-r><C-w> 
 
 " Shut the hell up NERD
