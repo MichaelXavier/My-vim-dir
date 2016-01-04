@@ -11,3 +11,15 @@ ln -s ~/.vim/vimrc ~/.vimrc
 
 git submodule update --init --recursive
 ```
+
+## Adding a new Pathogen bundle
+
+```
+git submodule add [git url] bundle/[name]
+```
+
+## Getting updates from remotes
+
+```
+git submodule foreach git pull origin master
+```
