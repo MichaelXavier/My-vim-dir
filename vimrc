@@ -157,6 +157,8 @@ nmap <leader>du :diffupdate<cr>
 nmap <leader>gg :Ggrep 
 nmap <leader>co :copen<cr>
 nmap <leader>to :tabo \| only<cr>
+nmap <leader>wv :vsplit<cr>
+nmap <leader>ws :split<cr>
 
 " quickfix bindings
 nmap <leader>cn :cn<cr>
@@ -175,7 +177,8 @@ let g:NERDShutUp=1
 map K <Nop>
 
 " Put a color line to help identify too-long lines
-set colorcolumn=81
+set colorcolumn=101
+set textwidth=98
 
 nmap <leader>R :RainbowParenthesesToggle<cr>
 
@@ -237,4 +240,5 @@ let g:notes_suffix = '.md'
 " looks like i've got some inefficient syntax highlighting
 set maxmempattern=2000
 
+autocmd Filetype gitcommit setlocal spell textwidth=72
 source ~/.vim/per_machine_config
