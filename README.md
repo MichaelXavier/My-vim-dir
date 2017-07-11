@@ -1,5 +1,10 @@
 # Usage
 
+*NOTE* This repo is no longer maintained because the author converted
+to the church of emacs circa the year 2014. Please
+see [this repo](https://github.com/michaelxavier/emacs.d) for an
+updated configuration for a better editor.
+
 In your home directory (Linux or Mac), run:
 
 ```
